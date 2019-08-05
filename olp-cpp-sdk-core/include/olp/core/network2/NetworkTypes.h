@@ -56,7 +56,8 @@ enum class ErrorCode {
   CANCELLED_ERROR = -5,
   AUTHENTICATION_ERROR = -6,
   TIMEOUT_ERROR = -7,
-  UNKNOWN_ERROR = -8,
+  NETWORK_OVERHEAD_ERROR = -8,
+  UNKNOWN_ERROR = -9,
 };
 
 /**
@@ -67,8 +68,8 @@ enum class ErrorCode {
  */
 class NetworkStatus {
  public:
-  NetworkStatus(RequestId id) : request_id_(id) {}
-  NetworkStatus(ErrorCode code) : error_code_(code) {}
+  explicit NetworkStatus(RequestId id) : request_id_(id) {}
+  explicit NetworkStatus(ErrorCode code) : error_code_(code) {}
 
   /**
    * @brief Check if network request push was successfull.

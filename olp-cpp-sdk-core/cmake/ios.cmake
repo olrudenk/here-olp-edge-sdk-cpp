@@ -22,6 +22,14 @@ if(IOS)
         ${NETWORK_IOS_SOURCES}
         ${NETWORK_IOS_INTERNAL_INCLUDES}
     )
+
+    aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/../src/network2/ios NETWORK2_IOS_SOURCES)
+    file(GLOB_RECURSE NETWORK2_IOS_INTERNAL_INCLUDES "*.h" "*.inl")
+    set(NETWORK2_IOS_SOURCES
+        ${NETWORK2_IOS_SOURCES}
+        ${NETWORK2_IOS_INTERNAL_INCLUDES}
+    )
+
     add_definitions(-DNETWORK_HAS_IOS)
 else()
     set(NETWORK_IOS_SOURCES)
