@@ -146,6 +146,10 @@ set(NETWORK2_SOURCE
     "${CMAKE_CURRENT_SOURCE_DIR}/src/network2/Network.cpp"
 )
 
+set(NETWORK2_WINHTTP_SOURCES
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/network2/winhttp/NetworkProtocolWinHttp.cpp"
+)
+
 if (ANDROID)
 file(GLOB NETWORK_ANDROID_SOURCE
     "${CMAKE_CURRENT_SOURCE_DIR}/src/network/android/*.cpp"

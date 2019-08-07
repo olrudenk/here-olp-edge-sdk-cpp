@@ -48,7 +48,7 @@ enum class RequestIdConstants : std::uint64_t {
  * @brief Common Network error codes.
  */
 enum class ErrorCode {
-  NO_ERROR = 0,
+  SUCCESS = 0,
   IO_ERROR = -1,
   AUTHORIZATION_ERROR = -2,
   INVALID_URL_ERROR = -3,
@@ -74,7 +74,7 @@ class NetworkStatus {
    * @brief Check if network request push was successfull.
    */
   bool IsSuccessfull() const {
-    return error_code_ == ErrorCode::NO_ERROR &&
+    return error_code_ == ErrorCode::SUCCESS &&
            request_id_ !=
                static_cast<RequestId>(RequestIdConstants::RequestIdInvalid);
   }
@@ -94,7 +94,7 @@ class NetworkStatus {
   RequestId request_id_{
       static_cast<RequestId>(RequestIdConstants::RequestIdInvalid)};
   /// Error code.
-  ErrorCode error_code_{ErrorCode::NO_ERROR};
+  ErrorCode error_code_{ErrorCode::SUCCESS};
 };
 
 }  // namespace network2
