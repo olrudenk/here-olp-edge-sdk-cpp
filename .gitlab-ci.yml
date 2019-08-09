@@ -4,17 +4,8 @@ image: ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_VERSION}
   stage: build
   tags:
     - docker-prod
-  before_script:
-    - apk update
-    - apk add doxygen
   script:
     - $CI_PROJECT_DIR/scripts/linux/build.sh
-    - apk update && apk add doxygen
-    #- cd ./MBsysC/mbs_documentation/src
-    - doxygen Doxyfile
-    - doxygen doxygen/Doxyfile
-    - mv doxygen/documentation/html/ public/
-  artifacts:
     paths:
       - ${ARTIFACT}
     reports:
