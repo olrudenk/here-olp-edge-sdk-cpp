@@ -3,13 +3,13 @@ image: ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_VERSION}
 .build:
   stage: build
   tags:
-    - docker-prod
+  - docker-prod
   script:
-    - $CI_PROJECT_DIR/scripts/linux/build.sh
-    paths:
-      - ${ARTIFACT}
-    reports:
-      junit: "*.xml"
+  - $CI_PROJECT_DIR/scripts/linux/build.sh
+#    paths:
+#      - ${ARTIFACT}
+#    reports:
+#      junit: "*.xml"
 
 build_psv:
   extends: .build
