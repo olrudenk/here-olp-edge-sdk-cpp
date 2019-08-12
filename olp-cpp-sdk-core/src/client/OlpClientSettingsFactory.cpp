@@ -17,12 +17,26 @@
  * License-Filename: LICENSE
  */
 
-#include "olp/core/network2/Network.h"
+#include "olp/core/client/OlpClientSettingsFactory.h"
+
+#include "olp/core/porting/make_unique.h"
+#include "olp/core/thread/TaskScheduler.h"
+#include "olp/core/thread/ThreadPoolTaskScheduler.h"
+
+#include "olp/core/http/Network.h"
 
 namespace olp {
-namespace network2 {
+namespace client {
 
-Network::~Network() = default;
+std::unique_ptr<thread::TaskScheduler>
+OlpClientSettingsFactory::CreateDefaultTaskScheduler(size_t thread_count) {
+  return std::make_unique<thread::ThreadPoolTaskScheduler>(thread_count);
+}
 
-}  // end of namespace network2
-}  // end of namespace olp
+std::unique_ptr<http::Network>
+OlpClientSettingsFactory::CreateDefaultNetworkRequestHandler() {
+  return nullptr;
+}
+
+}  // namespace client
+}  // namespace olp
