@@ -15,11 +15,11 @@ matrix:
   - compiler: clang
     env: BUILD_TYPE=RelWithDebInfo WORKSPACE=$TRAVIS_BUILD_DIR
     name: Linux Build using clang 
-    script: $WORKSPACE/scripts/linux/build.sh
+    script: $WORKSPACE/scripts/linux/travis_build.sh
   - compiler: gcc
     env: BUILD_TYPE=COVERAGE WORKSPACE=$TRAVIS_BUILD_DIR
     name: Linux Build using gcc & tests & code coverage
-    script: $WORKSPACE/scripts/linux/build.sh && $WORKSPACE/scripts/linux/test.sh
+    script: $WORKSPACE/scripts/linux/travis_build.sh && $WORKSPACE/scripts/linux/travis_test.sh
   - language: android
     name: Android Build
     os : linux
@@ -36,7 +36,7 @@ matrix:
   - os: osx
     env: BUILD_TYPE=RelWithDebInfo WORKSPACE=$TRAVIS_BUILD_DIR
     name: OSX Build
-    script: $WORKSPACE/scripts/linux/build.sh
+    script: $WORKSPACE/scripts/linux/travis_build.sh
   - os: osx
     name: IOS Build
     script: $WORKSPACE/scripts/ios/build.sh  
